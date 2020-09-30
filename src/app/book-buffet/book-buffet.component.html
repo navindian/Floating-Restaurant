@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>Book Your Buffet</h4>
+        </div>
+        <div class="panel-body">
+
+          <form class="form" [formGroup]="buffetBookingForm" (ngSubmit)="bookBuffet()">
+
+            <div class="form-group">
+              <label for="buffetName">Buffet Name</label>
+              <select name="buffetName" id="buffetName" class="form-control" placeholder="Select a buffet">
+                <option value="">--Select a buffet--</option>
+                <option value="NorthIndianSpecial">North Indian Special</option>
+                <option value="SouthIndianSpecial">South Indian Special</option>
+                <option value="ChineseSpecial">Chinese Special</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="emailId">Email Id</label>
+              <input type="email" id="emailId" placeholder="Enter your email" name="emailId" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="plateCount">Plate Count</label>
+              <input type="number" id="plateCount" name="plateCount" placeholder="Number of plates"
+                class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="bookedOn">Booking Date</label>
+              <input type="date" id="bookedOn" name="bookedOn" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Book Buffet</button>
+
+          </form>
+
+          <span name="successMessage" class="text-success" *ngIf="successMessage">{{ successMessage }}</span>
+          <span name="errorMessage" class="text-danger">{{ errorMessage }}</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

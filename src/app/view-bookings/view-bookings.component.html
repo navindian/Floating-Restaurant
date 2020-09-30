@@ -1,0 +1,59 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                View Bookings
+            </div>
+            <div class="panel-body" *ngIf="bookingDetails==null">
+                <form [formGroup]="viewBookingForm" (ngSubmit)="onSearchChange()" class="form">
+                    <div class="form-group">
+                        <label for="emailId">Email Id:</label>
+                        <input type="text" class="form-control" formControlName="emailId" id="emailId"
+                            placeholder="Enter your Email Id" name="emailId">
+                        <p *ngIf="viewBookingForm.controls.emailId.errors && (viewBookingForm.controls.emailId.touched||viewBookingForm.controls.emailId.touched)"
+                            class="alert alert-danger">This field is required!
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" [disabled]="!viewBookingForm.valid"
+                            name="viewBookings">View Bookings</button>
+                    </div>
+                </form>
+                <div *ngIf="errorMessage!=null && viewBookingForm.valid" class="text-danger" name="errorMessage">
+                    {{errorMessage}}
+                </div>
+            </div>
+
+            <div *ngIf="bookingDetails!=null" class="panel-body">
+                <div>
+                    <h4> Booking Details for {{bookingDetails.emailId}} </h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Booking Id</th>
+                                <th>Buffet Name</th>
+                                <th>Plate Count</th>
+                                <th>Booking Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <tr *ngFor="let details of bookingDetails.bookings">
+                                <td> {{details.bookingId}} </td>
+                                <td> {{details.buffetName}} </td>
+                                <td> {{details.plateCount|count }} </td>
+                                <td> {{details.bookingDate| date:'fullDate'}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button class="btn btn-warning" (click)=close() name="close"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
