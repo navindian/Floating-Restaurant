@@ -10,19 +10,22 @@ export class BookBuffetComponent implements OnInit {
 
   errorMessage: string;
   successMessage: string;
-  // buffetBookingForm :FormGroup
+  buffetBookingForm :FormGroup
 
   constructor(private fb: FormBuilder) {}
-    buffetBookingForm = this.fb.group({
-    buffetName: ["", Validators.required],
-    emailId: ["", Validators.required],
-    plateCount: ["", Validators.required],
-    bookedOn: ["", Validators.required],
-  });
+    
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.buffetBookingForm = this.fb.group({
+      buffetName: ["", Validators.required],
+      emailId: ["", Validators.required],
+      plateCount: ["", Validators.required],
+      bookedOn: ["", Validators.required],
+    });
+  }
+
   bookBuffet() {
-    console.log("I m here");
+    console.log("I'm here");
     this.successMessage = "Booking successfull";
   }
 
